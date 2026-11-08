@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>JagX &amp; JRILICENSE — The Future of African Tech</title>
+<meta name="description" content="JagX and JRILICENSE build AI, secure social platforms, systems and sovereign infrastructure from Nigeria to the world. JagX AI, JagX Connect, JagX OS, AetherBase, Vireo, Noder and more.">
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:title" content="JagX &amp; JRILICENSE — The Future of African Tech">
+<meta property="og:description" content="AI, secure social, systems and sovereign infrastructure. Built in Nigeria. Oriented toward Africa. Open to the world.">
+<meta property="og:image" content="images/jagx-connect.png">
+<link rel="icon" href="images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   JagX & JRILICENSE — design system
+   ============================================================ */
+:root{
+  --ink:#0a0a0a;
+  --ink-2:#0f0f0e;
+  --ink-3:#141412;
+  --gold:#c4a574;
+  --gold-bright:#e8d3a8;
+  --gold-deep:#8f7443;
+  --paper:#f4efe6;
+  --muted:#8d8778;
+  --muted-2:#5f5b52;
+  --line:rgba(196,165,116,.16);
+  --line-2:rgba(196,165,116,.30);
+  --live:#6fbf9a;
+  --build:#d9a441;
+  --horizon:#7d8794;
+  --radius:20px;
+  --radius-lg:28px;
+  --maxw:1200px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --font-body:'Figtree',system-ui,-apple-system,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{margin:0;line-height:1.08;font-weight:600;letter-spacing:-.02em}
+p{margin:0}
+::selection{background:var(--gold);color:var(--ink)}
+
+/* scrollbar */
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:#2a2823;border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold-deep)}
+
+/* ---------- shared ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+.serif{font-family:var(--font-display);font-style:italic;font-weight:400}
+.gold{color:var(--gold)}
+.grad-text{
+  background:linear-gradient(100deg,var(--gold-bright) 0%,var(--gold) 40%,var(--gold-deep) 70%,var(--gold-bright) 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:shimmer 7s linear infinite;
+}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:220% 50%}}
+
+.section{padding:120px 0;position:relative}
+.section-head{max-width:760px;margin-bottom:64px}
+.section-head h2{font-size:clamp(30px,4.4vw,54px);margin:18px 0 20px}
+.section-head p{color:var(--muted);font-size:clamp(15px,1.6vw,18px);max-width:640px}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}
+.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}
+.reveal.d4{transition-delay:.32s}
+.reveal.d5{transition-delay:.40s}
+.reveal.d6{transition-delay:.48s}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important}
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .4s var(--ease),backdrop-filter .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(10,10,10,.82);
+  backdrop-filter:blur(18px) saturate(140%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);
+  border-bottom-color:var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px var(--line-2),0 0 22px rgba(196,165,116,.22)}
+.brand-txt{display:flex;flex-direction:column;line-height:1.05}
+.brand-txt b{font-size:15px;letter-spacing:.02em;font-weight:700}
+.brand-txt span{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{font-size:13.5px;color:#c9c3b6;position:relative;padding:4px 0;transition:color .3s}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);
+  transition:width .35s var(--ease);
+}
+.nav-links a:hover{color:var(--gold-bright)}
+.nav-links a:hover::after{width:100%}
+.nav-links a.nav-cta{
+  font-size:13px;font-weight:600;padding:10px 20px;border-radius:100px;
+  background:var(--gold);color:var(--ink);transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.nav-links a.nav-cta::after{display:none}
+.nav-links a.nav-cta:hover{color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 30px rgba(196,165,116,.32)}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px}
+.burger span{display:block;width:22px;height:2px;background:var(--paper);margin:5px 0;transition:.3s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding:130px 0 80px;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5}
+.orb.a{width:620px;height:620px;background:radial-gradient(circle,rgba(196,165,116,.42),transparent 68%);top:-180px;right:-120px;animation:float1 18s ease-in-out infinite}
+.orb.b{width:520px;height:520px;background:radial-gradient(circle,rgba(143,116,67,.34),transparent 70%);bottom:-200px;left:-140px;animation:float2 22s ease-in-out infinite}
+.orb.c{width:380px;height:380px;background:radial-gradient(circle,rgba(196,165,116,.20),transparent 72%);top:38%;left:44%;animation:float1 26s ease-in-out infinite reverse}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,50px) scale(1.12)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-40px) scale(1.08)}}
+.grid-overlay{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(196,165,116,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(196,165,116,.055) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 20%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000 20%,transparent 78%);
+}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;width:100%}
+.hero-copy{max-width:660px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:100px;
+  border:1px solid var(--line-2);background:rgba(196,165,116,.06);
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);font-weight:600;
+  margin-bottom:26px;
+}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--live);position:relative}
+.pulse-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--live);animation:pulse 2.2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+.hero h1{font-size:clamp(40px,6.6vw,80px);letter-spacing:-.035em;margin-bottom:26px}
+.hero h1 .serif{display:block}
+.hero-sub{font-size:clamp(15px,1.7vw,19px);color:#b8b2a4;max-width:560px;margin-bottom:38px}
+.hero-sub b{color:var(--paper);font-weight:600}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:52px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:100px;
+  font-size:14.5px;font-weight:600;cursor:pointer;border:1px solid transparent;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease);
+}
+.btn-primary{background:var(--gold);color:var(--ink)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(196,165,116,.34)}
+.btn-ghost{border-color:var(--line-2);color:var(--paper);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright);transform:translateY(-3px)}
+.btn svg{width:16px;height:16px;transition:transform .35s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+
+.hero-stats{display:flex;flex-wrap:wrap;gap:38px}
+.hstat b{display:block;font-family:var(--font-display);font-size:clamp(26px,3.4vw,40px);color:var(--gold-bright);font-weight:500;line-height:1}
+.hstat span{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:8px;display:block}
+
+/* hero crest */
+.hero-crest{position:relative;display:flex;align-items:center;justify-content:center}
+.crest-ring{
+  position:relative;width:min(400px,80vw);aspect-ratio:1;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.crest-ring::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:1px solid var(--line-2);
+  animation:spin 26s linear infinite;
+}
+.crest-ring::after{
+  content:'';position:absolute;inset:-26px;border-radius:50%;
+  border:1px dashed rgba(196,165,116,.22);
+  animation:spin 40s linear infinite reverse;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.crest-img{
+  width:74%;aspect-ratio:1;border-radius:50%;object-fit:cover;
+  box-shadow:0 0 0 1px var(--line-2),0 30px 90px rgba(0,0,0,.7),0 0 90px rgba(196,165,116,.24);
+  animation:breathe 6s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+.crest-tag{
+  position:absolute;bottom:6%;left:50%;transform:translateX(-50%);
+  padding:9px 20px;border-radius:100px;background:rgba(10,10,10,.86);
+  border:1px solid var(--line-2);backdrop-filter:blur(10px);
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-bright);white-space:nowrap;
+}
+
+/* ---------- marquee ---------- */
+.marquee{
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:22px 0;overflow:hidden;background:var(--ink-2);position:relative;
+}
+.marquee::before,.marquee::after{
+  content:'';position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none;
+}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--ink-2),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--ink-2),transparent)}
+.marquee-track{display:flex;gap:52px;width:max-content;animation:scrollx 42s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+.marquee-item{
+  display:flex;align-items:center;gap:14px;font-family:var(--font-display);
+  font-size:clamp(18px,2.2vw,26px);color:#6d675b;white-space:nowrap;font-style:italic;
+}
+.marquee-item i{width:6px;height:6px;border-radius:50%;background:var(--gold-deep);display:block}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:26px}
+.company-card{
+  position:relative;padding:40px;border-radius:var(--radius-lg);
+  border:1px solid var(--line);background:linear-gradient(160deg,var(--ink-3),var(--ink-2));
+  overflow:hidden;transition:transform .5s var(--ease),border-color .5s var(--ease);
+}
+.company-card::before{
+  content:'';position:absolute;top:-60%;right:-30%;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,165,116,.14),transparent 70%);
+  transition:transform .7s var(--ease);
+}
+.company-card:hover{transform:translateY(-6px);border-color:var(--line-2)}
+.company-card:hover::before{transform:scale(1.25)}
+.company-card h3{font-size:26px;margin-bottom:6px;position:relative}
+.company-card .role{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;position:relative}
+.company-card p{color:#a9a396;font-size:15px;position:relative}
+.company-card .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;position:relative}
+.chip{
+  font-size:11.5px;padding:6px 13px;border-radius:100px;border:1px solid var(--line);
+  color:#bdb7a9;background:rgba(255,255,255,.02);
+}
+
+.founder{
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:0;border-radius:var(--radius-lg);
+  border:1px solid var(--line);overflow:hidden;background:var(--ink-2);
+}
+.founder-photo{position:relative;min-height:420px;overflow:hidden}
+.founder-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(.25) contrast(1.05);transition:transform 1.2s var(--ease),filter .8s var(--ease)}
+.founder:hover .founder-photo img{transform:scale(1.05);filter:grayscale(0) contrast(1.05)}
+.founder-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,var(--ink-2))}
+.founder-body{padding:48px;display:flex;flex-direction:column;justify-content:center}
+.founder-body h3{font-size:clamp(24px,3vw,34px);margin-bottom:8px}
+.founder-body .role{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:22px}
+.founder-body p{color:#a9a396;font-size:15.5px;margin-bottom:18px}
+.quote{
+  border-left:2px solid var(--gold);padding-left:20px;margin-top:14px;
+  font-family:var(--font-display);font-style:italic;font-size:clamp(17px,2vw,21px);color:var(--gold-bright);line-height:1.5;
+}
+.quote cite{display:block;font-family:var(--font-body);font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+
+/* ---------- products ---------- */
+.prod-feature{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:var(--radius-lg);
+  border:1px solid var(--line);overflow:hidden;background:var(--ink-2);margin-bottom:26px;
+  transition:border-color .5s var(--ease),transform .5s var(--ease);
+}
+.prod-feature:hover{border-color:var(--line-2);transform:translateY(-4px)}
+.prod-feature.rev .prod-visual{order:2}
+.prod-body{padding:48px}
+.prod-body h3{font-size:clamp(26px,3.2vw,38px);margin:16px 0 14px}
+.prod-body>p{color:#a9a396;font-size:15.5px;margin-bottom:24px}
+.prod-visual{
+  position:relative;display:flex;align-items:center;justify-content:center;padding:44px;
+  background:radial-gradient(circle at 50% 40%,rgba(196,165,116,.10),transparent 68%),var(--ink-3);
+  overflow:hidden;min-height:340px;
+}
+.prod-visual .glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(196,165,116,.28),transparent 70%);filter:blur(50px);animation:float1 14s ease-in-out infinite}
+.prod-visual img{position:relative;width:min(230px,60%);border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px var(--line-2);transition:transform .6s var(--ease)}
+.prod-feature:hover .prod-visual img{transform:translateY(-8px) rotate(-1.5deg)}
+.prod-visual .ai-mark{position:relative;width:min(200px,55%);aspect-ratio:1;border-radius:34px;background:var(--ink);display:flex;align-items:center;justify-content:center;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px var(--line-2)}
+.prod-visual .ai-mark img{width:56%;border-radius:0;box-shadow:none}
+.status{
+  display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;padding:5px 12px;border-radius:100px;
+}
+.status.live{color:var(--live);background:rgba(111,191,154,.10);border:1px solid rgba(111,191,154,.28)}
+.status.build{color:var(--build);background:rgba(217,164,65,.10);border:1px solid rgba(217,164,65,.28)}
+.status.horizon{color:var(--horizon);background:rgba(125,135,148,.10);border:1px solid rgba(125,135,148,.28)}
+.status i{width:6px;height:6px;border-radius:50%;background:currentColor;display:block}
+.feat-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.feat-list span{font-size:12px;padding:6px 13px;border-radius:100px;border:1px solid var(--line);color:#bdb7a9;background:rgba(255,255,255,.02);transition:.3s var(--ease)}
+.feat-list span:hover{border-color:var(--gold);color:var(--gold-bright);transform:translateY(-2px)}
+.prod-link{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--gold);transition:gap .3s var(--ease)}
+.prod-link:hover{gap:15px}
+.prod-link svg{width:15px;height:15px}
+
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:26px}
+.pcard{
+  position:relative;padding:32px;border-radius:var(--radius);border:1px solid var(--line);
+  background:linear-gradient(165deg,var(--ink-3),var(--ink-2));overflow:hidden;
+  transition:transform .5s var(--ease),border-color .5s var(--ease);
+}
+.pcard::after{
+  content:'';position:absolute;inset:0;border-radius:var(--radius);opacity:0;
+  background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(196,165,116,.10),transparent 60%);
+  transition:opacity .4s var(--ease);pointer-events:none;
+}
+.pcard:hover{transform:translateY(-7px);border-color:var(--line-2)}
+.pcard:hover::after{opacity:1}
+.pcard .num{font-family:var(--font-display);font-size:13px;color:var(--gold-deep);font-style:italic;margin-bottom:16px;display:block}
+.pcard h4{font-size:20px;margin-bottom:10px}
+.pcard p{color:#9d9789;font-size:14px;margin-bottom:18px}
+.pcard .status{margin-top:auto}
+
+/* ---------- connect deep dive ---------- */
+.connect-band{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fcard{
+  padding:24px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.015);
+  transition:transform .45s var(--ease),border-color .45s var(--ease),background .45s var(--ease);
+}
+.fcard:hover{transform:translateY(-5px);border-color:var(--line-2);background:rgba(196,165,116,.05)}
+.fcard .ic{
+  width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+  background:rgba(196,165,116,.10);border:1px solid var(--line);margin-bottom:16px;
+  transition:transform .45s var(--ease);
+}
+.fcard:hover .ic{transform:scale(1.1) rotate(-6deg)}
+.fcard .ic svg{width:19px;height:19px;stroke:var(--gold);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.fcard h4{font-size:15.5px;margin-bottom:7px}
+.fcard p{font-size:13px;color:#948e80;line-height:1.5}
+
+/* ---------- studio ---------- */
+.studio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.scard{
+  position:relative;padding:28px;border-radius:var(--radius);border:1px solid var(--line);
+  background:linear-gradient(170deg,var(--ink-3),var(--ink-2));overflow:hidden;
+  transition:transform .5s var(--ease),border-color .5s var(--ease);
+}
+.scard:hover{transform:translateY(-6px);border-color:var(--line-2)}
+.scard .tag{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:14px;display:block}
+.scard h4{font-size:18px;margin-bottom:9px}
+.scard p{font-size:13.5px;color:#948e80}
+.scard .lineup{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.scard .lineup span{font-size:12.5px;color:#b0aa9c;display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed rgba(196,165,116,.12);padding-bottom:6px}
+.scard .lineup span em{font-style:normal;color:var(--gold);font-weight:600}
+
+/* ---------- stats band ---------- */
+.stats-band{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;
+}
+.stat-cell{background:var(--ink-2);padding:44px 30px;text-align:center;transition:background .5s var(--ease)}
+.stat-cell:hover{background:var(--ink-3)}
+.stat-cell b{display:block;font-family:var(--font-display);font-size:clamp(34px,4.6vw,54px);color:var(--gold-bright);font-weight:500;line-height:1}
+.stat-cell span{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:12px;display:block}
+
+/* ---------- contact ---------- */
+.contact{position:relative;overflow:hidden;text-align:center;padding:130px 0}
+.contact .orb.d{width:700px;height:700px;background:radial-gradient(circle,rgba(196,165,116,.20),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:breathe 9s ease-in-out infinite}
+.contact-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.contact h2{font-size:clamp(32px,5.4vw,64px);margin:20px 0 22px}
+.contact p{color:#b0aa9c;font-size:clamp(15px,1.7vw,18px);margin-bottom:40px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:56px}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:left}
+.ccard{
+  padding:26px;border-radius:var(--radius);border:1px solid var(--line);background:rgba(255,255,255,.02);
+  transition:transform .45s var(--ease),border-color .45s var(--ease);
+}
+.ccard:hover{transform:translateY(-5px);border-color:var(--line-2)}
+.ccard .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block}
+.ccard .v{font-size:15px;color:var(--paper);font-weight:600;word-break:break-word}
+.ccard .s{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:56px 0 40px;background:var(--ink-2)}
+.foot-top{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;margin-bottom:44px}
+.foot-brand{max-width:340px}
+.foot-brand .brand{margin-bottom:18px}
+.foot-brand p{color:var(--muted);font-size:13.5px}
+.foot-cols{display:flex;flex-wrap:wrap;gap:64px}
+.foot-col h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 16px;font-weight:700}
+.foot-col a{display:block;font-size:13.5px;color:#a9a396;margin-bottom:11px;transition:color .3s,transform .3s var(--ease)}
+.foot-col a:hover{color:var(--gold-bright);transform:translateX(4px)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.foot-bottom p{font-size:12.5px;color:var(--muted-2)}
+.foot-bottom .jri{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted)}
+.foot-bottom .jri i{width:6px;height:6px;border-radius:50%;background:var(--live);display:block}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .hero-crest{order:-1}
+  .crest-ring{width:min(300px,70vw)}
+  .about-grid{grid-template-columns:1fr}
+  .founder{grid-template-columns:1fr}
+  .founder-photo{min-height:340px}
+  .founder-photo::after{background:linear-gradient(180deg,transparent 40%,var(--ink-2))}
+  .prod-feature{grid-template-columns:1fr}
+  .prod-feature.rev .prod-visual{order:0}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(2,1fr)}
+  .studio-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-band{grid-template-columns:repeat(2,1fr)}
+  .contact-cards{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .section{padding:84px 0}
+  .nav-links{
+    position:fixed;top:74px;left:0;right:0;flex-direction:column;gap:0;
+    background:rgba(10,10,10,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);
+    padding:12px 24px 24px;transform:translateY(-130%);transition:transform .45s var(--ease);
+  }
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:14px 0;width:100%;border-bottom:1px solid var(--line);font-size:15px}
+  .nav-links .nav-cta{margin-top:16px;text-align:center;width:100%}
+  .burger{display:block}
+  .prod-grid,.feat-grid,.studio-grid{grid-template-columns:1fr}
+  .stats-band{grid-template-columns:1fr}
+  .hero-stats{gap:26px}
+  .prod-body,.founder-body,.company-card{padding:30px}
+  .foot-cols{gap:36px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <img src="images/jagx-crest.jpg" alt="JagX crest">
+      <span class="brand-txt"><b>JagX</b><span>× JRILICENSE</span></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#connect">JagX Connect</a>
+      <a href="#studio">Studio</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <div class="orb a"></div>
+    <div class="orb b"></div>
+    <div class="orb c"></div>
+    <div class="grid-overlay"></div>
+  </div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="hero-badge reveal"><span class="pulse-dot"></span>Founded 15 August 2022 · Nigeria</span>
+      <h1 class="reveal d1">The Future of <span class="serif grad-text">African Tech</span></h1>
+      <p class="hero-sub reveal d2">JagX &amp; JRILICENSE build <b>AI, secure social platforms, systems and sovereign infrastructure</b> from Lagos to the world. Intelligence that stays home. Security that travels the continent.</p>
+      <div class="hero-actions reveal d3">
+        <a href="#products" class="btn btn-primary">Explore Products
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#about" class="btn btn-ghost">Meet the Founder</a>
+      </div>
+      <div class="hero-stats reveal d4">
+        <div class="hstat"><b data-count="11">0</b><span>Product lines</span></div>
+        <div class="hstat"><b data-count="2">0</b><span>Live today</span></div>
+        <div class="hstat"><b data-count="12">0</b><span>Countries served</span></div>
+        <div class="hstat"><b data-count="150" data-suffix="+">0</b><span>Projects shipped</span></div>
+      </div>
+    </div>
+    <div class="hero-crest reveal d2">
+      <div class="crest-ring">
+        <img class="crest-img" src="images/jagx-crest.jpg" alt="JagX crest logo">
+        <span class="crest-tag">Build for future generations</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item">JagX AI<i></i></span>
+    <span class="marquee-item">JagX Connect<i></i></span>
+    <span class="marquee-item">JagX OS<i></i></span>
+    <span class="marquee-item">AetherBase<i></i></span>
+    <span class="marquee-item">Vireo<i></i></span>
+    <span class="marquee-item">Noder<i></i></span>
+    <span class="marquee-item">JagX Coins<i></i></span>
+    <span class="marquee-item">JagX Classes<i></i></span>
+    <span class="marquee-item">JagX Card<i></i></span>
+    <span class="marquee-item">Mini Apps<i></i></span>
+    <span class="marquee-item">JagX Motors<i></i></span>
+    <span class="marquee-item">JagX Estate<i></i></span>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Two companies · One ambition</span>
+      <h2>Built in Nigeria. Oriented toward Africa. <span class="serif gold">Open to the world.</span></h2>
+      <p>JagX and JRILICENSE are not a single product. They are a long-term program of product lines that together give African users and builders more control over their data, their tools and their digital future.</p>
+    </div>
+
+    <div class="about-grid">
+      <article class="company-card reveal d1">
+        <h3>JagX</h3>
+        <div class="role">Technology company · Founded 15 Aug 2022</div>
+        <p>JagX builds the products: multi-agent AI, secure social infrastructure, operating environments, backends and developer tools. From Lagos, it has shipped real products people use today — JagX AI and JagX Buddy Connect — with eleven product lines in motion.</p>
+        <div class="meta">
+          <span class="chip">AI &amp; Agents</span>
+          <span class="chip">Secure Social</span>
+          <span class="chip">Systems</span>
+          <span class="chip">Infrastructure</span>
+          <span class="chip">Builder Tools</span>
+        </div>
+      </article>
+      <article class="company-card reveal d2">
+        <h3>JRILICENSE</h3>
+        <div class="role">Licensing · Integrity · Standards</div>
+        <p>JRILICENSE is the formal expression of licensing, integrity and standards around the growing family of products. Every product that ships carries the JRI mark — a guarantee of authenticity, build quality, security and global standard across digital and physical goods.</p>
+        <div class="meta">
+          <span class="chip">JRI Certified</span>
+          <span class="chip">Build Quality</span>
+          <span class="chip">Security</span>
+          <span class="chip">Craftsmanship</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="founder reveal d2">
+      <div class="founder-photo">
+        <img src="images/founder.jpg" alt="Gbadamosi Tajudeen Olajide, founder of JagX and JRILICENSE">
+      </div>
+      <div class="founder-body">
+        <h3>Gbadamosi Tajudeen Olajide</h3>
+        <div class="role">Founder · Builder · Developer</div>
+        <p>A Nigerian technology entrepreneur and software developer, he is the founder of JagX and JRILICENSE — two identities united by a single ambition: to build technology that serves Africa first and stands with the world.</p>
+        <p>His work brings together product thinking, software development and platform architecture, with a builder's belief that useful technology should be understandable, dependable and made with purpose.</p>
+        <blockquote class="quote">"Ambition opens the door. Craft, patience and evidence carry a project across the threshold."<cite>— Gbadamosi Tajudeen Olajide</cite></blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="section" id="products" style="background:var(--ink-2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The product lines</span>
+      <h2>An African-first <span class="serif gold">technology stack</span></h2>
+      <p>Some pieces are already live. Others are in active development. Several are deliberate long-term bets that will take years to mature — intelligence, social systems, operating environments, backends, developer tools and eventually hardware.</p>
+    </div>
+
+    <!-- JagX AI -->
+    <article class="prod-feature reveal">
+      <div class="prod-body">
+        <span class="status live"><i></i>Live</span>
+        <h3>JagX AI</h3>
+        <p>A multi-agent intelligence platform with specialist agents — Engineer, Researcher, Architect, Creator, Africa and Media. Live web retrieval, sandboxed code execution, durable jobs, memory and streaming, with Africa-first offline capabilities. Free starter API keys are available for builders.</p>
+        <div class="feat-list">
+          <span>Multi-agent</span><span>Live web retrieval</span><span>Code sandbox</span>
+          <span>Durable jobs</span><span>Memory</span><span>Streaming</span>
+          <span>GitHub workspace</span><span>Connectors</span><span>Vault</span>
+          <span>Skills</span><span>Image &amp; video studio</span><span>Offline-first</span>
+        </div>
+        <a class="prod-link" href="https://www.jagxai.name.ng/" target="_blank" rel="noopener">Open jagxai.name.ng
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="prod-visual">
+        <div class="glow"></div>
+        <div class="ai-mark"><img src="images/jagx-ai-logo.svg" alt="JagX AI logo"></div>
+      </div>
+    </article>
+
+    <!-- JagX Connect -->
+    <article class="prod-feature rev reveal">
+      <div class="prod-body">
+        <span class="status live"><i></i>Live</span>
+        <h3>JagX Connect</h3>
+        <p>A secure social platform designed for meaningful interactions, real-time chat, communities and African data security. Posts, Reels, live streaming, classes, coins, courses and hiring in one place — built so conversations and creative work stay closer to the people who create them.</p>
+        <div class="feat-list">
+          <span>Posts &amp; feed</span><span>Reels</span><span>Live streaming</span>
+          <span>Messaging</span><span>Group chats</span><span>Communities</span>
+          <span>Courses</span><span>Certificates</span><span>Marketplace</span>
+          <span>Hiring</span><span>Gifts</span><span>JagX Coins</span>
+        </div>
+        <a class="prod-link" href="https://jagx-buddy-connect.name.ng/" target="_blank" rel="noopener">Open jagx-buddy-connect.name.ng
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="prod-visual">
+        <div class="glow"></div>
+        <img src="images/jagx-connect.png" alt="JagX Connect app icon">
+      </div>
+    </article>
+
+    <!-- In build -->
+    <div class="section-head reveal" style="margin-top:80px;margin-bottom:36px">
+      <span class="eyebrow">In active build</span>
+      <h2 style="font-size:clamp(24px,3vw,36px)">Systems under construction</h2>
+    </div>
+    <div class="prod-grid">
+      <article class="pcard reveal d1">
+        <span class="num">01</span>
+        <h4>JagX OS</h4>
+        <p>An original operating system for PC and mobile. Native .jagx apps, privacy-first design and on-device intelligence — written with Nigerian and African realities in mind.</p>
+        <span class="status build"><i></i>In build</span>
+      </article>
+      <article class="pcard reveal d2">
+        <span class="num">02</span>
+        <h4>AetherBase</h4>
+        <p>An open backend platform providing authentication, database, storage, realtime and hosting — a practical, cost-aware foundation for apps, websites and games across Africa.</p>
+        <span class="status build"><i></i>In build</span>
+      </article>
+      <article class="pcard reveal d3">
+        <span class="num">03</span>
+        <h4>Vireo</h4>
+        <p>An AI full-stack website and app builder. Plan first, choose a design direction, then generate real Next.js code — from idea to working product without fighting setup.</p>
+        <span class="status build"><i></i>In build</span>
+      </article>
+      <article class="pcard reveal d1">
+        <span class="num">04</span>
+        <h4>Noder</h4>
+        <p>An AI-first collaborative IDE with a Monaco editor, agents, live preview, GitHub workflows and a marketplace — for teams where agents and humans work in the same environment.</p>
+        <span class="status build"><i></i>In build</span>
+      </article>
+      <article class="pcard reveal d2">
+        <span class="num">05</span>
+        <h4>JagX Devices &amp; Mobile OS</h4>
+        <p>Phones, edge devices and a mobile operating system designed around African connectivity, power realities and on-device intelligence.</p>
+        <span class="status horizon"><i></i>Long-term</span>
+      </article>
+      <article class="pcard reveal d3">
+        <span class="num">06</span>
+        <h4>Security, Payments &amp; Trust</h4>
+        <p>Security tooling, payment corridors and trust infrastructure that respect local realities while meeting high standards of integrity.</p>
+        <span class="status horizon"><i></i>Planned</span>
+      </article>
+    </div>
+
+    <div class="pcard reveal" style="margin-top:22px;padding:40px">
+      <span class="num">07 — The long horizon</span>
+      <h4 style="font-size:clamp(20px,2.4vw,28px);margin-bottom:12px">Silicon, mobility, regional cloud, education, energy and protective systems</h4>
+      <p style="max-width:760px">Deliberate long-term bets oriented toward African sovereignty and long-term capability — through the 2030s and beyond. Built carefully over years, not rushed to market.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONNECT DEEP DIVE ================= -->
+<section class="section connect-band" id="connect">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">JagX Connect · Chat, Live, Learn, Earn</span>
+      <h2>Everything in <span class="serif gold">one place</span></h2>
+      <p>Connect with people, share your work, learn new skills and grow a community — with African data security first. Fourteen feature families, one platform.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="fcard reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h6"/></svg></div>
+        <h4>Posts &amp; Feed</h4><p>Share updates, photos and ideas with the people who matter.</p>
+      </div>
+      <div class="fcard reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></div>
+        <h4>Short Videos &amp; Reels</h4><p>Create and discover short-form video built for mobile-first users.</p>
+      </div>
+      <div class="fcard reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M5 5l3 3M19 5l-3 3M5 19l3-3M19 19l-3-3"/></svg></div>
+        <h4>Live Streaming</h4><p>Go live to your community with real-time chat and reactions.</p>
+      </div>
+      <div class="fcard reveal d4">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 21l1.8-5.5A8 8 0 1 1 21 12z"/></svg></div>
+        <h4>Messaging &amp; Groups</h4><p>Private messages and group chats with controls you can switch off.</p>
+      </div>
+      <div class="fcard reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <h4>Creator Profiles</h4><p>A home for your work, your audience and your identity.</p>
+      </div>
+      <div class="fcard reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20c0-3 3-5 6-5s6 2 6 5M15 20c0-2 2-3.4 4-3.4"/></svg></div>
+        <h4>Communities</h4><p>Gather around shared interests and grow a real community.</p>
+      </div>
+      <div class="fcard reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 9v5c0 1.5 2.2 3 5 3s5-1.5 5-3V9"/></svg></div>
+        <h4>Courses &amp; Certificates</h4><p>JagX Classes let teachers host sessions and issue completion records.</p>
+      </div>
+      <div class="fcard reveal d4">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4z"/><path d="M20 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></svg></div>
+        <h4>Books</h4><p>Publish and read books inside the platform.</p>
+      </div>
+      <div class="fcard reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.4 11H5.4z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+        <h4>Marketplace</h4><p>List and discover products and services from the community.</p>
+      </div>
+      <div class="fcard reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></div>
+        <h4>Hiring</h4><p>Post roles and find work inside the network.</p>
+      </div>
+      <div class="fcard reveal d3">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 8v12M3 12h18M12 8c-2-3-6-3-6 0M12 8c2-3 6-3 6 0"/></svg></div>
+        <h4>Gifts &amp; JagX Coins</h4><p>Virtual gifts and an in-app coin economy with transfers and payouts.</p>
+      </div>
+      <div class="fcard reveal d4">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
+        <h4>JagX Card</h4><p>Member and verification cards with public number checks.</p>
+      </div>
+      <div class="fcard reveal d1">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M6 4h12v5a6 6 0 0 1-12 0z"/><path d="M6 6H4a2 2 0 0 0 2 4M18 6h2a2 2 0 0 1-2 4"/></svg></div>
+        <h4>Competitions</h4><p>Live quizzes, science and arts contests, and beauty contests with anti-cheat.</p>
+      </div>
+      <div class="fcard reveal d2">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></div>
+        <h4>Mini Apps Directory</h4><p>Creators list apps and sites for 5,250 JagX Coins per 30-day period.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STUDIO ================= -->
+<section class="section" id="studio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">JagX World Studio · JRI Licensed</span>
+      <h2>One brand. <span class="serif gold">Many worlds.</span></h2>
+      <p>A multi-discipline studio shipping pixel-perfect product across digital and physical — from 3D animated websites and business automation to JagX-branded phones, motors, estate, jewelry and clothing. Every product carries the JRI license.</p>
+    </div>
+    <div class="studio-grid">
+      <article class="scard reveal d1">
+        <span class="tag">Digital</span>
+        <h4>Business Automation</h4>
+        <p>AI workflows, CRM pipelines and ops automation that scale while you sleep.</p>
+      </article>
+      <article class="scard reveal d2">
+        <span class="tag">Digital</span>
+        <h4>Website Creation</h4>
+        <p>World-class 3D animated websites, e-commerce, SaaS platforms and PWAs.</p>
+      </article>
+      <article class="scard reveal d3">
+        <span class="tag">Digital</span>
+        <h4>Brand &amp; Identity</h4>
+        <p>Logos, brand systems, motion design and full creative direction.</p>
+      </article>
+      <article class="scard reveal d4">
+        <span class="tag">Hardware</span>
+        <h4>JagX Mobile Phones</h4>
+        <p>Custom JagX-branded smartphones running proprietary JagX OS v2.0.</p>
+        <div class="lineup">
+          <span>Pulse X1 <em>Flagship</em></span>
+          <span>Aurum Fold <em>Foldable</em></span>
+          <span>Pulse Lite <em>Daily</em></span>
+          <span>Pulse Mini <em>Compact</em></span>
+        </div>
+      </article>
+      <article class="scard reveal d1">
+        <span class="tag">Mobility</span>
+        <h4>JagX Motors</h4>
+        <p>Performance, hybrid and electric — every JagX vehicle wears the JRI flag.</p>
+        <div class="lineup">
+          <span>Velox GT <em>V8 · 620 HP</em></span>
+          <span>Aurum SUV <em>Hybrid · 7-seat</em></span>
+          <span>Pulse EV <em>480 km range</em></span>
+          <span>Apex Coupe <em>Turbo I6</em></span>
+        </div>
+      </article>
+      <article class="scard reveal d2">
+        <span class="tag">Real Estate</span>
+        <h4>JagX Estate</h4>
+        <p>Smart homes, towers and off-plan villas — all JRI-certified for excellence.</p>
+        <div class="lineup">
+          <span>Aurum Towers <em>Lekki, Lagos</em></span>
+          <span>Pulse Heights <em>Banana Island</em></span>
+          <span>Neon Court Villas <em>Abuja</em></span>
+          <span>JagX Smart Estate <em>Ibeju</em></span>
+        </div>
+      </article>
+      <article class="scard reveal d3">
+        <span class="tag">Luxury</span>
+        <h4>Bespoke Jewelry</h4>
+        <p>Hand-crafted JagX jewelry — gold, diamonds, signature pieces and commissions.</p>
+      </article>
+      <article class="scard reveal d4">
+        <span class="tag">Fashion</span>
+        <h4>Clothing Brand</h4>
+        <p>Premium JagX apparel: streetwear, formalwear, limited drops and collabs.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="stats-band reveal">
+      <div class="stat-cell"><b data-count="11">0</b><span>Product lines</span></div>
+      <div class="stat-cell"><b data-count="150" data-suffix="+">0</b><span>Projects delivered</span></div>
+      <div class="stat-cell"><b data-count="12">0</b><span>Countries served</span></div>
+      <div class="stat-cell"><b data-count="2022" data-plain="1">0</b><span>Building since</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="hero-bg"><div class="orb d"></div></div>
+  <div class="wrap contact-inner">
+    <span class="eyebrow reveal">Let's build something legendary</span>
+    <h2 class="reveal d1">Ready to see the <span class="serif grad-text">full story?</span></h2>
+    <p class="reveal d2">Reach out for partnerships, product enquiries, or to build with JagX and JRILICENSE. We usually reply within a few hours, seven days a week.</p>
+    <div class="contact-actions reveal d3">
+      <a class="btn btn-primary" href="https://wa.me/2349160654415" target="_blank" rel="noopener">Chat on WhatsApp
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="mailto:gbadamositajudeenwan@gmail.com">Email the team</a>
+    </div>
+    <div class="contact-cards reveal d4">
+      <a class="ccard" href="https://wa.me/2349160654415" target="_blank" rel="noopener">
+        <span class="k">WhatsApp · Instant</span>
+        <span class="v">+234 916 065 4415</span>
+        <span class="s">Tap to chat with JagX now</span>
+      </a>
+      <a class="ccard" href="mailto:gbadamositajudeenwan@gmail.com">
+        <span class="k">Email · Detailed</span>
+        <span class="v">gbadamositajudeenwan@gmail.com</span>
+        <span class="s">For proposals &amp; briefs</span>
+      </a>
+      <a class="ccard" href="mailto:jrilicense@gmail.com">
+        <span class="k">Support &amp; Legal</span>
+        <span class="v">jrilicense@gmail.com</span>
+        <span class="s">Nigeria · Serving worldwide</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <img src="images/jagx-crest.jpg" alt="JagX crest">
+          <span class="brand-txt"><b>JagX</b><span>× JRILICENSE</span></span>
+        </a>
+        <p>Building AI, secure social, systems and sovereign infrastructure for Africa and the world. Founded 15 August 2022 in Nigeria.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Live products</h5>
+          <a href="https://www.jagxai.name.ng/" target="_blank" rel="noopener">JagX AI</a>
+          <a href="https://jagx-buddy-connect.name.ng/" target="_blank" rel="noopener">JagX Connect</a>
+          <a href="#connect">JagX Classes</a>
+          <a href="#connect">JagX Coins</a>
+        </div>
+        <div class="foot-col">
+          <h5>In build</h5>
+          <a href="#products">JagX OS</a>
+          <a href="#products">AetherBase</a>
+          <a href="#products">Vireo</a>
+          <a href="#products">Noder</a>
+        </div>
+        <div class="foot-col">
+          <h5>Studio</h5>
+          <a href="#studio">Phones &amp; Motors</a>
+          <a href="#studio">Estate</a>
+          <a href="#studio">Jewelry &amp; Clothing</a>
+          <a href="#studio">Websites &amp; Automation</a>
+        </div>
+        <div class="foot-col">
+          <h5>Contact</h5>
+          <a href="https://wa.me/2349160654415" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:gbadamositajudeenwan@gmail.com">Email</a>
+          <a href="https://jagx-buddy-connect.name.ng/terms" target="_blank" rel="noopener">Terms of Service</a>
+          <a href="https://jagx-buddy-connect.name.ng/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="yr">2026</span> JagX &amp; JRILICENSE. All rights reserved. Built in Nigeria · Oriented toward Africa · Open to the world.</p>
+      <span class="jri"><i></i>JRI Licensed · Active</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- year ---------- */
+  var yr = document.getElementById('yr');
+  if (yr) { yr.textContent = new Date().getFullYear(); }
+
+  /* ---------- nav scroll state ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if (window.scrollY > 24) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- mobile menu ---------- */
+  var burger = document.getElementById('burger');
+  var navLinks = document.getElementById('navLinks');
+  if (burger && navLinks){
+    burger.addEventListener('click', function(){
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- animated counters ---------- */
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count')) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var plain = el.getAttribute('data-plain') === '1';
+    var dur = 1500, start = null;
+    function step(ts){
+      if (!start) { start = ts; }
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(target * eased);
+      el.textContent = (plain ? String(val) : val.toLocaleString()) + suffix;
+      if (p < 1) { requestAnimationFrame(step); }
+    }
+    requestAnimationFrame(step);
+  }
+  var counters = document.querySelectorAll('[data-count]');
+  if ('IntersectionObserver' in window){
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          animateCount(e.target);
+          cio.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function(el){ cio.observe(el); });
+  } else {
+    counters.forEach(animateCount);
+  }
+
+  /* ---------- marquee: duplicate for seamless loop ---------- */
+  var mq = document.getElementById('marquee');
+  if (mq){ mq.innerHTML += mq.innerHTML; }
+
+  /* ---------- card cursor glow ---------- */
+  document.querySelectorAll('.pcard').forEach(function(card){
+    card.addEventListener('mousemove', function(ev){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ---------- subtle hero parallax ---------- */
+  var orbs = document.querySelectorAll('.hero .orb');
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) { return; }
+    ticking = true;
+    requestAnimationFrame(function(){
+      var y = window.scrollY;
+      orbs.forEach(function(o, i){
+        var f = (i + 1) * 0.05;
+        o.style.transform = 'translateY(' + (y * f) + 'px)';
+      });
+      ticking = false;
+    });
+  }, { passive: true });
+
+})();
+</script>
+</body>
+</html>
