@@ -12,7 +12,7 @@ Built as a static site: no build step, no dependencies, no framework. Open `inde
 
 | Desktop | Mobile |
 |---|---|
-| ![Desktop view](screenshots/desktop.png) | ![Mobile view](screenshots/mobile.png) |
+| ![Desktop view](screenshots/desktop.jpg) | ![Mobile view](screenshots/mobile.jpg) |
 
 ---
 
